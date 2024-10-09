@@ -29,5 +29,10 @@ int main()
     const char* b = "ke to";
     const char* c = "Hfllo, my";
 
-    cout << substr(a,b) << " " << substr(a,c) << endl;
+    cout << boolalpha << substr(a,b) << " " << substr(a,c) << endl; 
+    //Указывает, что переменные типа bool отображаются как true или false в потоке.
+    //По умолчанию переменные типа bool показываются как 1 или 0.
+    //
+
+
 }
