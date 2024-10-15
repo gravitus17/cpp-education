@@ -20,6 +20,5 @@ int main()
 {
     int ans = 0;
     eventdigit(9223372036854775806, ans);
-    cout << ans << endl;
 
 }

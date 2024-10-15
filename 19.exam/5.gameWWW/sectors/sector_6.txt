@@ -1,0 +1,5 @@
+Said to have been the brainchild of Odysseus, 
+what construction from ancient Greek mythology gives its name 
+to software that misleads users of its true intent by disguising itself as a standard program?
+
+Answer: Trojan Horse
