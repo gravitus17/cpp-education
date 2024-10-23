@@ -124,12 +124,9 @@ void checkAnswer(int &currentSector)
     while(!answerFile.eof())
     {   
         string first_part;
-        string second;
         answerFile >> sector_num; 
         getline(answerFile, first_part);
         
-        if(!second.empty())
-            first_part += " " + second;
         if (sector_num == currentSector)
         {
             correct_answer = first_part;
