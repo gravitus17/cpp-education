@@ -38,14 +38,7 @@ void AtmStatus()
                 }
             }
         }
-        int count100 = 0;
-        for ( int i : money )
-        {
-            if( i == 100)
-                count100++;
-        }
-        cout << " count 100 -" << count100 << endl;
-        cout << "Amount banknote:\n";
+ 
         for (int i = 0; i < 6; i++)
         {
             cout << TICKET_DENOMINATION[i] << " - " << amount_ticket[i] << endl;
