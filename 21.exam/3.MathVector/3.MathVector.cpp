@@ -29,7 +29,7 @@ struct Mathvector
         Mathvector result;
         result.x = vec.x * scalar;
         result.y = vec.y * scalar;
-
+        return result;
     }
     double length(Mathvector& vec)
     {
@@ -106,7 +106,8 @@ int main()
             cout << "input scalar: ";
             cin >> scalar;
             Mathvector result =  result.scale(vec, scalar);
-            cout << "Result: " << setprecision(5) << result.x << " " << result.y << endl; 
+            cout.precision(4);
+            cout << "Result: " << result.x << " " << result.y << endl; 
         }
 
         else if (input == "length")
