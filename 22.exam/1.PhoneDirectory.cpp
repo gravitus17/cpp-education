@@ -6,35 +6,40 @@
 
 using namespace std;
 
-map <string, string> phoneDirectory;
+multimap <string, string> phoneDirectory;
+multimap <string, string> nameDirectory;
 
 void addNumber(string& number, string& name)
 {
-    pair <string, string> phoneNumber(number, name);
-    phoneDirectory.insert(phoneNumber);
-
-}
-
-void findPhoneByName(string& lastname)
-{   
-    for (map <string, string>::iterator it = phoneDirectory.begin();
-        it != phoneDirectory.end(); it++)
-    {
-        if (lastname == it -> second)
-            cout << it->first << " ";
     
-    }
-    cout << endl;
+    phoneDirectory.insert({number, name});
+    nameDirectory.insert({name, number});
+
 }
 
-void findNameByPhone (string& number)
+void findPhoneByName(const string& lastname) 
 {
-     for (map <string, string>::iterator it = phoneDirectory.begin();
-        it != phoneDirectory.end(); it++)
-    {
-        if (number == it -> first)
-            cout << it->second << endl;
-            break;
+    auto range = nameDirectory.equal_range(lastname);
+    if (range.first != range.second) {
+        for (auto it = range.first; it != range.second; ++it) {
+            cout << it->second << " "; // Output the phone number
+        }
+        cout << endl;
+    } else {
+        cout << "No phone number found for " << lastname << endl;
+    }
+}
+
+void findNameByPhone(const string& number) 
+{
+    auto range = phoneDirectory.equal_range(number);
+    if (range.first != range.second) {
+        for (auto it = range.first; it != range.second; ++it) {
+            cout << it->second << " "; // Output the name
+        }
+        cout << endl;
+    } else {
+        cout << "No name found for phone number " << number << endl;
     }
 }
 
@@ -51,16 +56,21 @@ int main()
         istringstream iss(user_input);
         string firstWord;
         iss >> firstWord;
+        string secondWord;
+        iss >> secondWord;
 
-        if (std::regex_match(firstWord, regex("^[0-9]{2}-[0-9]{2}-[0-9]{2}$"))) {
+        if (regex_match(firstWord, regex("^[0-9]{2}-[0-9]{2}-[0-9]{2}$"))&& !secondWord.empty())
+        {
             // It's a phone number entry
-            std::string lastName;
-            iss >> lastName;
-            addNumber(firstWord, lastName);
-        } else if (regex_match(firstWord, regex("^[A-Za-z]+$"))) {
+            addNumber(firstWord, secondWord);
+        } 
+        else if (regex_match(firstWord, regex("^[A-Za-z]+$"))) 
+        {
             // It's a last name query
             findPhoneByName(firstWord);
-        } else {
+        } 
+        else 
+        {
             // Assume it's a phone number query
             findNameByPhone(firstWord);
         }
@@ -68,8 +78,10 @@ int main()
         char exit;
         cout << "Finish program ? y/n?\n";
         cin >> exit;
+        cin.ignore();
         if (exit == 'y')
-            return 0;
+            break;
 
     }
+    return 0;
 }
