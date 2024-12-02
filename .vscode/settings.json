@@ -48,5 +48,6 @@
         "ctime": "cpp",
         "sstream": "cpp",
         "fstream": "cpp"
-    }
+    },
+    "cquery.cacheDirectory": "${workspaceFolder}/.vscode/cquery_cached_index/"
 }
