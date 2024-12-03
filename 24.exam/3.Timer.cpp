@@ -6,12 +6,14 @@
 
 using namespace std;
 
-void displayTimeRemaining(int minutes, int seconds) {
+void displayTimeRemaining(int minutes, int seconds) 
+{
     // Display the remaining time in MM:SS format
     cout << "\r" << setfill('0') << setw(2) << minutes << ":" << setfill('0') << setw(2) << seconds << flush;
 }
 
-int main() {
+int main() 
+{
     int minutes, seconds;
 
     cout << "Enter the countdown time (MM:SS): ";
